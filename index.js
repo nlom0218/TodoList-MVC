@@ -11,8 +11,11 @@ $form.appendChild($button);
 $app.appendChild($form);
 
 function App() {
+  let todos = [];
+
   const addTodo = () => {
     const todo = $input.value;
+    todos.push({ todo, done: false });
     $input.value = "";
   };
   $form.addEventListener("submit", (e) => {
