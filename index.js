@@ -9,3 +9,16 @@ $button.textContent = "등록하기";
 $form.appendChild($input);
 $form.appendChild($button);
 $app.appendChild($form);
+
+function App() {
+  const addTodo = () => {
+    const todo = $input.value;
+    $input.value = "";
+  };
+  $form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    addTodo();
+  });
+}
+
+new App();
