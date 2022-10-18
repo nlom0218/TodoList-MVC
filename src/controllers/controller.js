@@ -1,22 +1,21 @@
 import Todos from "../models/todos.js";
-import FormView from "../views/FormView.js";
-import TodoListView from "../views/TodoListView.js";
+import { $, $app } from "../utils/dom.js";
+import View from "../views/view.js";
 
 export default class Controller {
   constructor() {
-    this.formView = new FormView();
-    this.todoListView = new TodoListView();
     this.todos = new Todos();
-    this.addEvent();
+    this.view = new View($app);
+    this.eventHandler();
   }
 
-  addTodo() {
-    const todos = this.todos.addTodo();
-    this.todoListView.addTodo(todos);
-  }
+  addTodo = () => {
+    const newTodos = Todos.addTodo(this.todos.todos);
+    View.todoRender(newTodos);
+  };
 
-  addEvent = () => {
-    this.formView._form.addEventListener("submit", (e) => {
+  eventHandler = () => {
+    $("todo-form").addEventListener("submit", (e) => {
       e.preventDefault();
       this.addTodo();
     });
