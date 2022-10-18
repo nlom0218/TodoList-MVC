@@ -1,10 +1,10 @@
-import { $ } from "../utils/dom.js";
+import { $, $app } from "../utils/dom.js";
 
 export default class View {
-  constructor($app) {
-    this.render($app);
+  constructor() {
+    this.render();
   }
-  render($app) {
+  render() {
     const template = `
         <form id="todo-form">
             <input 

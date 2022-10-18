@@ -1,11 +1,11 @@
 import Todos from "../models/todos.js";
-import { $, $app } from "../utils/dom.js";
+import { $ } from "../utils/dom.js";
 import View from "../views/view.js";
 
 export default class Controller {
   constructor() {
     this.todos = new Todos();
-    this.view = new View($app);
+    this.view = new View();
     this.eventHandler();
   }
 
