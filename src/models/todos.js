@@ -12,7 +12,8 @@ export default class Todos {
   };
 
   toggleTodo = (todoId) => {
-    this.todos[todoId].done = true;
+    const isDone = this.todos[todoId].done;
+    this.todos[todoId].done = isDone ? false : true;
   };
 
   deleteTodo = (todoId) => {
