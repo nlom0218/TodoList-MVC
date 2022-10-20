@@ -19,6 +19,11 @@ export default class Controller {
     View.todoRender(this.todosModel.todos);
   };
 
+  deleteTodo = (todoId) => {
+    this.todosModel.deleteTodo(todoId);
+    View.todoRender(this.todosModel.todos);
+  };
+
   eventHandler = () => {
     $("todo-form").addEventListener("submit", (e) => {
       e.preventDefault();
@@ -26,11 +31,16 @@ export default class Controller {
     });
     $("todo-list").addEventListener("click", (e) => {
       const {
+        id,
         parentNode: {
           dataset: { todoId },
         },
       } = e.target;
-      this.toggleTodo(todoId);
+      if (id === "todo-done-btn") {
+        this.toggleTodo(todoId);
+      } else {
+        this.deleteTodo(todoId);
+      }
     });
   };
 }

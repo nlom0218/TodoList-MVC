@@ -14,4 +14,8 @@ export default class Todos {
   toggleTodo = (todoId) => {
     this.todos[todoId].done = true;
   };
+
+  deleteTodo = (todoId) => {
+    this.todos.splice(todoId, 1);
+  };
 }
