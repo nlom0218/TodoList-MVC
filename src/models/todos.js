@@ -5,10 +5,10 @@ export default class Todos {
     this.todos = [];
   }
 
-  static addTodo = (todos) => {
+  addTodo = () => {
     const todo = $("todo-input").value;
     $("todo-input").value = "";
-    todos.push({ todo, done: false });
-    return todos;
+    this.todos.push({ todo, done: false });
+    return this.todos;
   };
 }

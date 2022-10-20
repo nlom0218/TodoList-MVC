@@ -10,7 +10,7 @@ export default class Controller {
   }
 
   addTodo = () => {
-    const newTodos = Todos.addTodo(this.todos.todos);
+    const newTodos = this.todos.addTodo();
     View.todoRender(newTodos);
   };
 
