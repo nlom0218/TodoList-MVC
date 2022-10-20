@@ -4,20 +4,33 @@ import View from "../views/view.js";
 
 export default class Controller {
   constructor() {
-    this.todos = new Todos();
+    this.todosModel = new Todos();
     this.view = new View();
     this.eventHandler();
   }
 
   addTodo = () => {
-    const newTodos = this.todos.addTodo();
-    View.todoRender(newTodos);
+    this.todosModel.addTodo();
+    View.todoRender(this.todosModel.todos);
+  };
+
+  toggleTodo = (todoId) => {
+    this.todosModel.toggleTodo(todoId);
+    View.todoRender(this.todosModel.todos);
   };
 
   eventHandler = () => {
     $("todo-form").addEventListener("submit", (e) => {
       e.preventDefault();
       this.addTodo();
+    });
+    $("todo-list").addEventListener("click", (e) => {
+      const {
+        parentNode: {
+          dataset: { todoId },
+        },
+      } = e.target;
+      this.toggleTodo(todoId);
     });
   };
 }

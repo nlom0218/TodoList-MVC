@@ -9,6 +9,9 @@ export default class Todos {
     const todo = $("todo-input").value;
     $("todo-input").value = "";
     this.todos.push({ todo, done: false });
-    return this.todos;
+  };
+
+  toggleTodo = (todoId) => {
+    this.todos[todoId].done = true;
   };
 }

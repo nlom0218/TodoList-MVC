@@ -23,8 +23,10 @@ export default class View {
   static todoRender = (todos) => {
     const template = todos
       .map(({ todo, done }, index) => {
-        return `<li id=${index}>
-            <span>${todo}</span>
+        return `<li data-todo-id=${index}>
+            <span style="text-decoration: ${
+              done && "line-through"
+            }">${todo}</span>
             <button id="todo-done-btn">${done ? "완료함" : "완료"}</button>
             <button id="todo-delete-btn">삭제</button>
         </li>
