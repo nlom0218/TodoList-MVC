@@ -29,17 +29,17 @@ export default class Controller {
       e.preventDefault();
       this.addTodo();
     });
-    $("todo-list").addEventListener("click", (e) => {
-      const {
-        id,
-        parentNode: {
-          dataset: { todoId },
-        },
-      } = e.target;
+
+    $("todo-list").addEventListener("click", ({ target }) => {
+      const { id } = target;
+      const { todoId } = target.closest("li").dataset;
       if (id === "todo-done-btn") {
         this.toggleTodo(todoId);
-      } else {
+        return;
+      }
+      if (id === "todo-delete-btn") {
         this.deleteTodo(todoId);
+        return;
       }
     });
   };
