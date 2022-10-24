@@ -6,6 +6,7 @@ export default class Controller {
   constructor() {
     this.todosModel = new Todos();
     this.view = new View();
+    View.todoRender(this.todosModel.todos);
     this.eventHandler();
   }
 
