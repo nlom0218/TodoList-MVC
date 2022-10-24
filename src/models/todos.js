@@ -3,6 +3,7 @@ import { $ } from "../utils/dom.js";
 export default class Todos {
   constructor() {
     this.todos = [];
+    this.init();
   }
 
   addTodo = () => {
@@ -18,5 +19,15 @@ export default class Todos {
 
   deleteTodo = (todoId) => {
     this.todos.splice(todoId, 1);
+  };
+
+  init = () => {
+    const todoList = localStorage.getItem("todos");
+    if (todoList) {
+      this.todos = todoList;
+      return;
+    } else {
+      localStorage.setItem("todos", JSON.stringify([]));
+    }
   };
 }
