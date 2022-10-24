@@ -6,7 +6,7 @@ export default class Controller {
   constructor() {
     this.todosModel = new Todos();
     this.view = new View();
-    View.todoRender(this.todosModel.todos);
+    this.init();
     this.eventHandler();
   }
 
@@ -22,6 +22,10 @@ export default class Controller {
 
   deleteTodo = (todoId) => {
     this.todosModel.deleteTodo(todoId);
+    View.todoRender(this.todosModel.todos);
+  };
+
+  init = () => {
     View.todoRender(this.todosModel.todos);
   };
 

@@ -23,6 +23,7 @@
 
 - [x] 첫 로드 시 빈 투두 목록를 localstroage에 저장하기
 - [x] localstorage에 이미 저장된 투두 목록이 있다면 해당 투두 목록 불러오기
-- [ ] 투두 생성시 localstorage의 투두 목록에 새로운 투두 추가하기
-- [ ] 투두 수정시 localstorage의 투두 목록 수정하기
-- [ ] 투두 삭세지 localstorage의 투두 목록 중 해당하는 투두 삭제하기
+- [x] 투두 생성시 localstorage의 투두 목록에 새로운 투두 추가하기
+- [x] 투두 수정시 localstorage의 투두 목록 수정하기
+- [x] 투두 삭세지 localstorage의 투두 목록 중 해당하는 투두 삭제하기
+- [ ] 리팩토링 - localstorage를 관리하는 함수를 담은 파일 관리하기

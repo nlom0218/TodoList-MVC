@@ -1,4 +1,8 @@
 import { $ } from "../utils/dom.js";
+import {
+  getLocalStorageTodos,
+  setLocalStorageTodos,
+} from "../utils/localStroage.js";
 
 export default class Todos {
   constructor() {
@@ -10,24 +14,24 @@ export default class Todos {
     const todo = $("todo-input").value;
     $("todo-input").value = "";
     this.todos.push({ todo, done: false });
-    localStorage.setItem("todos", JSON.stringify(this.todos));
+    setLocalStorageTodos(this.todos);
   };
 
   toggleTodo = (todoId) => {
     const isDone = this.todos[todoId].done;
     this.todos[todoId].done = isDone ? false : true;
-    localStorage.setItem("todos", JSON.stringify(this.todos));
+    setLocalStorageTodos(this.todos);
   };
 
   deleteTodo = (todoId) => {
     this.todos.splice(todoId, 1);
-    localStorage.setItem("todos", JSON.stringify(this.todos));
+    setLocalStorageTodos(this.todos);
   };
 
   init = () => {
-    const todoList = JSON.parse(localStorage.getItem("todos"));
-    if (todoList) {
-      this.todos = todoList;
+    const localTodos = getLocalStorageTodos();
+    if (localTodos) {
+      this.todos = localTodos;
       return;
     } else {
       localStorage.setItem("todos", JSON.stringify([]));
